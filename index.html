@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dental Studio - Odontología Especializada</title>
+    <title>Dental Studio VIP - Odontología Estética</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0284c7;
-            --primary-hover: #0369a1;
-            --accent: #38bdf8;
-            --bg-light: #f8fafc;
-            --bg-card: #ffffff;
-            --text-dark: #0f172a;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
+            --bg-dark: #07090e;
+            --bg-card: #0f141c;
+            --bg-card-hover: #161e2b;
+            --accent-cyan: #00f2fe;
+            --accent-blue: #4facfe;
+            --accent-gold: #fbbf24;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #1e293b;
             --whatsapp: #25d366;
         }
 
@@ -28,207 +29,251 @@
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: var(--bg-dark);
+            color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 110px;
         }
 
-        /* PITCH BAR PARA EL DENTISTA / DUEÑO */
+        /* PITCH BANNER EN LA PARTE SUPERIOR */
         .pitch-bar {
-            background: #0f172a;
-            color: #fff;
+            background: linear-gradient(90deg, #0b1120, #0284c7);
+            border-bottom: 1px solid var(--accent-cyan);
             padding: 12px 20px;
             text-align: center;
             font-size: 0.9rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.15);
         }
 
-        .pitch-bar strong { color: var(--accent); }
+        .pitch-bar strong { color: #fff; }
 
         .btn-pitch {
-            background: var(--accent);
-            color: #0f172a;
-            padding: 5px 14px;
+            background: var(--accent-cyan);
+            color: #000;
+            padding: 5px 16px;
             border-radius: 20px;
-            font-weight: 700;
+            font-weight: 800;
             text-decoration: none;
             margin-left: 10px;
             display: inline-block;
             font-size: 0.85rem;
+            transition: 0.3s;
         }
 
-        /* HERO SECTION */
+        .btn-pitch:hover {
+            box-shadow: 0 0 15px var(--accent-cyan);
+        }
+
+        /* HERO ULTRA MODERNO */
         .hero {
-            background: linear-gradient(135deg, rgba(2, 132, 199, 0.05), rgba(56, 189, 248, 0.15)),
-                        url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80') center/cover;
-            padding: 90px 20px 70px;
+            position: relative;
+            min-height: 75vh;
+            background: radial-gradient(circle at 50% 20%, rgba(0, 242, 254, 0.12), transparent 60%),
+                        linear-gradient(180deg, var(--bg-dark) 0%, #0c1017 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            padding: 80px 20px;
         }
 
-        .hero-badge {
-            background: rgba(2, 132, 199, 0.1);
-            color: var(--primary);
-            padding: 6px 16px;
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .badge-glow {
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 6px 18px;
             border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             display: inline-block;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
         }
 
         .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            margin-bottom: 15px;
-            line-height: 1.2;
+            font-family: 'Syne', sans-serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 40%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            max-width: 600px;
-            margin: 0 auto 30px;
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: 0 auto 35px;
         }
 
-        .btn {
-            padding: 12px 28px;
-            border-radius: 10px;
-            font-weight: 700;
+        .btn-glow {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: #000;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 800;
             text-decoration: none;
             display: inline-block;
+            font-size: 1.05rem;
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.4);
             transition: 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
         }
 
-        .btn-primary {
-            background-color: var(--primary);
-            color: #fff;
-            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+        .btn-glow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(0, 242, 254, 0.6);
         }
 
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
-        }
-
-        /* CONTAINER */
+        /* SECCIONES Y CONTENEDOR */
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 60px 20px;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .section-header h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--text-dark);
+            font-family: 'Syne', sans-serif;
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 10px;
         }
 
         .section-header p {
             color: var(--text-muted);
         }
 
-        /* TRATAMIENTOS / SERVICIOS */
-        .treatments-grid {
+        /* TRATAMIENTOS CON TARJETAS GLOW */
+        .grid-treatments {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
 
-        .treatment-card {
+        .card-treatment {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 28px;
-            transition: 0.3s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border-radius: 20px;
+            padding: 30px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .treatment-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.1);
+        .card-treatment::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+            opacity: 0;
+            transition: 0.3s;
         }
 
-        .icon-box {
-            width: 50px;
-            height: 50px;
-            background: rgba(2, 132, 199, 0.1);
-            color: var(--primary);
-            border-radius: 12px;
+        .card-treatment:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+        }
+
+        .card-treatment:hover::before {
+            opacity: 1;
+        }
+
+        .icon-wrapper {
+            width: 55px;
+            height: 55px;
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 16px;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
         }
 
         .treatment-title {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            color: #fff;
+            margin-bottom: 10px;
         }
 
         .treatment-desc {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             margin-bottom: 25px;
         }
 
-        .treatment-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--border);
-            padding-top: 16px;
-        }
-
-        .price-tag {
-            font-size: 1.1rem;
+        .treatment-price {
+            font-size: 1.3rem;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--accent-cyan);
         }
 
         .btn-select {
-            background: var(--bg-light);
-            border: 1px solid var(--border);
-            color: var(--text-dark);
-            padding: 8px 16px;
+            background: transparent;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 8px 18px;
             border-radius: 8px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: 0.2s;
+            transition: 0.3s;
         }
 
         .btn-select:hover {
-            background: var(--primary);
-            color: #fff;
-            border-color: var(--primary);
+            background: var(--accent-cyan);
+            color: #000;
         }
 
-        /* FORMULARIO DE AGENDAMIENTO */
-        .booking-section {
+        /* ANTES Y DESPUÉS (MUESTRA DE TRABAJOS) */
+        .before-after-box {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 20px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .ba-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        /* FORMULARIO DE RESERVA VIP */
+        .booking-box {
+            background: linear-gradient(180deg, var(--bg-card) 0%, #0a0d14 100%);
+            border: 1px solid var(--border);
+            border-radius: 24px;
             padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
             max-width: 650px;
             margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
         .form-group {
@@ -238,200 +283,212 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 600;
             font-size: 0.9rem;
-            color: var(--text-dark);
+            color: var(--text-muted);
         }
 
         .form-control {
             width: 100%;
-            padding: 12px 16px;
+            padding: 14px;
+            background: #07090e;
             border: 1px solid var(--border);
             border-radius: 10px;
+            color: #fff;
             font-size: 1rem;
-            background: var(--bg-light);
-            color: var(--text-dark);
             transition: 0.3s;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--primary);
-            background: #fff;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
         }
 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .btn-whatsapp-submit {
-            background-color: var(--whatsapp);
+        .btn-whatsapp {
+            background: var(--whatsapp);
             color: #fff;
             width: 100%;
-            padding: 14px;
-            border-radius: 10px;
-            font-size: 1.05rem;
-            font-weight: 700;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 800;
             border: none;
             cursor: pointer;
             transition: 0.3s;
+            margin-top: 10px;
         }
 
-        .btn-whatsapp-submit:hover {
-            background-color: #1eb854;
+        .btn-whatsapp:hover {
+            background: #1eb854;
+            transform: translateY(-2px);
         }
 
-        /* FOOTER */
         footer {
             border-top: 1px solid var(--border);
             text-align: center;
             padding: 40px 20px;
             color: var(--text-muted);
             font-size: 0.9rem;
-            background: #fff;
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .form-row { grid-template-columns: 1fr; }
-            .booking-section { padding: 25px; }
+            .hero h1 { font-size: 2.3rem; }
+            .before-after-box { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- BARRA PARA EL CLIENTE/DENTISTA -->
+    <!-- BARRA SUPERIOR PARA EL DENTISTA / PROSPECTO -->
     <div class="pitch-bar">
-        🦷 <strong>¿Eres dueño de esta clínica dental?</strong> Consigue tu sitio web con agenda directa a WhatsApp. 
-        <a href="https://wa.me/?text=Hola,%20vi%20la%20demo%20para%20dentistas%20y%20me%20interesa%20personalizarla." target="_blank" class="btn-pitch">¡Solicitar Web Aquí!</a>
+        ✨ <strong>¿Quieres esta web con la marca de tu clínica?</strong> Te la dejamos lista en 24 horas. 
+        <a href="https://wa.me/?text=Hola,%20vi%20la%20demo%20de%20dentista%20VIP%20y%20quiero%20cotizar." target="_blank" class="btn-pitch">¡Solicitar Mi Web!</a>
     </div>
 
     <!-- HERO -->
     <header class="hero">
-        <span class="hero-badge">Odontología de Vanguardia</span>
-        <h1>Tu Sonrisa Perfecta Empieza Aquí</h1>
-        <p>Atención odontológica integral con tecnología de punta. Solicita tu cita de valoración médica sin filas ni esperas.</p>
-        <a href="#agendar" class="btn btn-primary">Agendar Cita de Valoración</a>
+        <div class="hero-content">
+            <span class="badge-glow">Diseño de Sonrisas & Estética Dental</span>
+            <h1>Reinventamos la Estética de tu Sonrisa</h1>
+            <p>Experiencia odontológica de primer nivel con tecnología 3D y tratamientos indoloros. Solicita tu cita de valoración en 30 segundos.</p>
+            <a href="#agendar" class="btn-glow">Agendar Valoración VIP ✦</a>
+        </div>
     </header>
 
     <!-- TRATAMIENTOS -->
     <section class="container">
         <div class="section-header">
-            <h2>Nuestros Tratamientos</h2>
-            <p>Selecciona un tratamiento para iniciar tu agendamiento médico</p>
+            <h2>Especialidades Médicas</h2>
+            <p>Tratamientos personalizados con los estándares de calidad más altos</p>
         </div>
 
-        <div class="treatments-grid">
-            <!-- Tratamiento 1 -->
-            <div class="treatment-card">
+        <div class="grid-treatments">
+            <!-- 1 -->
+            <div class="card-treatment">
                 <div>
-                    <div class="icon-box">✨</div>
-                    <h3 class="treatment-title">Blanqueamiento Dental LED</h3>
-                    <p class="treatment-desc">Tratamiento estético avanzado en 1 sola sesión para aclarar varios tonos sin dañar el esmalte.</p>
+                    <div class="icon-wrapper">💎</div>
+                    <h3 class="treatment-title">Carillas de Porcelana & Zafiro</h3>
+                    <p class="treatment-desc">Diseño de sonrisa ultradelgado sin desgaste dental masivo. Resultados naturales e inalterables.</p>
                 </div>
-                <div class="treatment-footer">
-                    <span class="price-tag">Desde $80.00</span>
-                    <button class="btn-select" onclick="selectTreatment('Blanqueamiento Dental LED')">Agendar</button>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="treatment-price">Valoración $25</span>
+                    <button class="btn-select" onclick="selectTreatment('Carillas de Porcelana')">Agendar</button>
                 </div>
             </div>
 
-            <!-- Tratamiento 2 -->
-            <div class="treatment-card">
+            <!-- 2 -->
+            <div class="card-treatment">
                 <div>
-                    <div class="icon-box">🦷</div>
-                    <h3 class="treatment-title">Ortodoncia Estética e Invisible</h3>
-                    <p class="treatment-desc">Diseño de sonrisa con alineadores transparentes o brackets de zafiro de alta precisión.</p>
+                    <div class="icon-wrapper">⚡</div>
+                    <h3 class="treatment-title">Blanqueamiento Láser Zoom</h3>
+                    <p class="treatment-desc">Aclara hasta 6 tonos en una sola sesión de 45 minutos sin causar sensibilidad molesta.</p>
                 </div>
-                <div class="treatment-footer">
-                    <span class="price-tag">Valoración $20</span>
-                    <button class="btn-select" onclick="selectTreatment('Ortodoncia Estética')">Agendar</button>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="treatment-price">$95.00</span>
+                    <button class="btn-select" onclick="selectTreatment('Blanqueamiento Láser Zoom')">Agendar</button>
                 </div>
             </div>
 
-            <!-- Tratamiento 3 -->
-            <div class="treatment-card">
+            <!-- 3 -->
+            <div class="card-treatment">
                 <div>
-                    <div class="icon-box">🛡️</div>
-                    <h3 class="treatment-title">Limpieza Ultrasónica & Profilaxis</h3>
-                    <p class="treatment-desc">Remoción profunda de placa y sarro con ultrasonido, pulido dental y aplicación de flúor.</p>
+                    <div class="icon-wrapper">🦷</div>
+                    <h3 class="treatment-title">Alineadores Invisibles</h3>
+                    <p class="treatment-desc">Ortodoncia 100% transparente y removible. Corrige la posición de tus dientes sin brackets visibles.</p>
                 </div>
-                <div class="treatment-footer">
-                    <span class="price-tag">Desde $35.00</span>
-                    <button class="btn-select" onclick="selectTreatment('Limpieza Ultrasónica')">Agendar</button>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span class="treatment-price">Planes Mensuales</span>
+                    <button class="btn-select" onclick="selectTreatment('Alineadores Invisibles')">Agendar</button>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MUESTRA VISUAL ANTES Y DESPUÉS -->
+    <section class="container">
+        <div class="section-header">
+            <h2>Resultados Reales</h2>
+            <p>Transformaciones de pacientes atendidos en nuestra clínica</p>
+        </div>
+
+        <div class="before-after-box">
+            <div>
+                <p style="color: var(--accent-gold); font-weight: 700; margin-bottom: 8px;">CASO 01: Diseños de Sonrisa en Zafiro</p>
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80" class="ba-img" alt="Caso Dental 1">
+            </div>
+            <div>
+                <p style="color: var(--accent-cyan); font-weight: 700; margin-bottom: 8px;">CASO 02: Blanqueamiento e Higiene Profunda</p>
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80" class="ba-img" alt="Caso Dental 2">
             </div>
         </div>
     </section>
 
     <!-- FORMULARIO DE AGENDAMIENTO -->
     <section id="agendar" class="container">
-        <div class="section-header">
-            <h2>Agendar Consulta Médica</h2>
-            <p>Confirma tus datos y nos pondremos en contacto directo por WhatsApp</p>
-        </div>
+        <div class="booking-box">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <h3 style="font-family: 'Syne', sans-serif; font-size: 1.8rem; color: #fff;">Agendar Cita Directa</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Elige tu tratamiento y reserva el horario de tu preferencia</p>
+            </div>
 
-        <div class="booking-section">
-            <form onsubmit="sendDentalAppointment(event)">
+            <form onsubmit="sendVIPAppointment(event)">
                 <div class="form-group">
-                    <label>Nombre Completo del Paciente</label>
-                    <input type="text" id="patientName" class="form-control" placeholder="Ej. Ana Martínez" required>
+                    <label>Nombre del Paciente</label>
+                    <input type="text" id="pName" class="form-control" placeholder="Ej. Dra. Valeria Ríos" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Motivo de Consulta / Tratamiento</label>
-                    <select id="treatmentSelect" class="form-control">
-                        <option>Cita de Valoración General</option>
-                        <option>Blanqueamiento Dental LED</option>
-                        <option>Ortodoncia / Alineadores</option>
-                        <option>Limpieza Ultrasónica</option>
-                        <option>Urgencia / Dolor Dental</option>
+                    <label>Tratamiento de Interés</label>
+                    <select id="pTreatment" class="form-control">
+                        <option>Carillas de Porcelana & Zafiro</option>
+                        <option>Blanqueamiento Láser Zoom</option>
+                        <option>Alineadores Invisibles</option>
+                        <option>Limpieza Profunda & Profilaxis</option>
+                        <option>Consulta de Valoración General</option>
                     </select>
                 </div>
 
-                <div class="form-row">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     <div class="form-group">
-                        <label>Fecha Preferida</label>
-                        <input type="date" id="dateSelect" class="form-control" required>
+                        <label>Fecha Estimada</label>
+                        <input type="date" id="pDate" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label>Turno Preferido</label>
-                        <select id="timeSelect" class="form-control">
-                            <option>Mañana (9:00 AM - 12:00 PM)</option>
+                        <label>Horario Preferido</label>
+                        <select id="pTime" class="form-control">
+                            <option>Mañana (9:00 AM - 1:00 PM)</option>
                             <option>Tarde (2:00 PM - 6:00 PM)</option>
                         </select>
                     </div>
                 </div>
 
-                <button type="submit" class="btn-whatsapp-submit">Confirmar Cita por WhatsApp 📲</button>
+                <button type="submit" class="btn-whatsapp">Solicitar Cita vía WhatsApp 📲</button>
             </form>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 Dental Studio. Sitio web demostrativo para clínicas y consultorios dentales.</p>
+        <p>© 2026 Dental Studio VIP. Sitio web demostrativo de alta gama para clínicas y consultorios.</p>
     </footer>
 
     <script>
         function selectTreatment(name) {
-            const select = document.getElementById('treatmentSelect');
-            select.value = name;
+            document.getElementById('pTreatment').value = name;
             document.getElementById('agendar').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function sendDentalAppointment(e) {
+        function sendVIPAppointment(e) {
             e.preventDefault();
-            const name = document.getElementById('patientName').value;
-            const treatment = document.getElementById('treatmentSelect').value;
-            const date = document.getElementById('dateSelect').value;
-            const time = document.getElementById('timeSelect').value;
+            const name = document.getElementById('pName').value;
+            const treatment = document.getElementById('pTreatment').value;
+            const date = document.getElementById('pDate').value;
+            const time = document.getElementById('pTime').value;
 
-            let msg = `Hola! Quisiera solicitar una cita médica en la clínica dental:%0A%0A`;
+            let msg = `Hola! Quisiera solicitar una cita médica de valoración VIP:%0A%0A`;
             msg += `👤 *Paciente:* ${name}%0A`;
-            msg += `🦷 *Tratamiento:* ${treatment}%0A`;
+            msg += `✨ *Tratamiento:* ${treatment}%0A`;
             msg += `📅 *Fecha:* ${date}%0A`;
-            msg += `⏰ *Turno:* ${time}%0A%0A`;
+            msg += `⏰ *Horario:* ${time}%0A%0A`;
             msg += `¿Tienen disponibilidad en esa fecha?`;
 
             window.open(`https://wa.me/?text=${msg}`, '_blank');
