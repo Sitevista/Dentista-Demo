@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dental Studio VIP - Odontología Estética</title>
+    <title>Dental Studio VIP - Odontología Estética Avanzada</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #07090e;
-            --bg-card: #0f141c;
-            --bg-card-hover: #161e2b;
+            --bg-dark: #06080d;
+            --bg-card: #0e131f;
+            --bg-card-hover: #161f33;
             --accent-cyan: #00f2fe;
             --accent-blue: #4facfe;
             --accent-gold: #fbbf24;
@@ -33,7 +33,20 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-bottom: 110px;
+            padding-bottom: 120px;
+        }
+
+        /* EFECTO DE GLOW EN EL FONDO */
+        .glow-bg {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
         }
 
         /* PITCH BANNER EN LA PARTE SUPERIOR */
@@ -46,7 +59,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.2);
         }
 
         .pitch-bar strong { color: #fff; }
@@ -54,7 +67,7 @@
         .btn-pitch {
             background: var(--accent-cyan);
             color: #000;
-            padding: 5px 16px;
+            padding: 6px 18px;
             border-radius: 20px;
             font-weight: 800;
             text-decoration: none;
@@ -65,24 +78,15 @@
         }
 
         .btn-pitch:hover {
-            box-shadow: 0 0 15px var(--accent-cyan);
+            box-shadow: 0 0 20px var(--accent-cyan);
+            transform: translateY(-2px);
         }
 
-        /* HERO ULTRA MODERNO */
+        /* HERO SECTION */
         .hero {
             position: relative;
-            min-height: 75vh;
-            background: radial-gradient(circle at 50% 20%, rgba(0, 242, 254, 0.12), transparent 60%),
-                        linear-gradient(180deg, var(--bg-dark) 0%, #0c1017 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 90px 20px 70px;
             text-align: center;
-            padding: 80px 20px;
-        }
-
-        .hero-content {
-            max-width: 800px;
         }
 
         .badge-glow {
@@ -102,7 +106,7 @@
 
         .hero h1 {
             font-family: 'Syne', sans-serif;
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             line-height: 1.1;
             margin-bottom: 20px;
             background: linear-gradient(135deg, #ffffff 40%, var(--accent-cyan) 100%);
@@ -117,10 +121,37 @@
             margin: 0 auto 35px;
         }
 
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 15px 25px;
+            border-radius: 16px;
+            min-width: 160px;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
         .btn-glow {
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
             color: #000;
-            padding: 14px 32px;
+            padding: 16px 36px;
             border-radius: 12px;
             font-weight: 800;
             text-decoration: none;
@@ -135,16 +166,16 @@
             box-shadow: 0 0 35px rgba(0, 242, 254, 0.6);
         }
 
-        /* SECCIONES Y CONTENEDOR */
+        /* CONTENEDORES Y SECCIONES */
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 50px 20px;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 45px;
         }
 
         .section-header h2 {
@@ -158,10 +189,10 @@
             color: var(--text-muted);
         }
 
-        /* TRATAMIENTOS CON TARJETAS GLOW */
+        /* GRID DE TRATAMIENTOS CON FOTOS Y TARJETAS */
         .grid-treatments {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
             gap: 25px;
         }
 
@@ -169,62 +200,55 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 20px;
-            padding: 30px;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-treatment::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
-            opacity: 0;
-            transition: 0.3s;
         }
 
         .card-treatment:hover {
             background: var(--bg-card-hover);
             border-color: var(--accent-cyan);
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.15);
         }
 
-        .card-treatment:hover::before {
-            opacity: 1;
+        .treatment-img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
         }
 
-        .icon-wrapper {
-            width: 55px;
-            height: 55px;
-            background: rgba(0, 242, 254, 0.08);
-            border: 1px solid rgba(0, 242, 254, 0.2);
-            border-radius: 14px;
+        .treatment-body {
+            padding: 22px;
+            flex-grow: 1;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            margin-bottom: 20px;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .treatment-title {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         .treatment-desc {
             color: var(--text-muted);
-            font-size: 0.92rem;
-            margin-bottom: 25px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .treatment-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .treatment-price {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: var(--accent-cyan);
         }
@@ -245,35 +269,77 @@
             color: #000;
         }
 
-        /* ANTES Y DESPUÉS (MUESTRA DE TRABAJOS) */
-        .before-after-box {
+        /* GALERÍA ANTES Y DESPUÉS (MÁS COMPLETA) */
+        .before-after-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .ba-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 30px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            align-items: center;
+            border-radius: 18px;
+            padding: 20px;
+            text-align: center;
         }
 
         .ba-img {
             width: 100%;
-            height: 220px;
+            height: 200px;
             object-fit: cover;
             border-radius: 12px;
+            margin-bottom: 12px;
             border: 1px solid var(--border);
+        }
+
+        .ba-tag {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* TECNOLOGÍA & BENEFICIOS */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-title {
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .feature-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
         /* FORMULARIO DE RESERVA VIP */
         .booking-box {
-            background: linear-gradient(180deg, var(--bg-card) 0%, #0a0d14 100%);
+            background: linear-gradient(180deg, var(--bg-card) 0%, #07090e 100%);
             border: 1px solid var(--border);
             border-radius: 24px;
             padding: 40px;
-            max-width: 650px;
+            max-width: 680px;
             margin: 0 auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
 
         .form-group {
@@ -290,7 +356,7 @@
         .form-control {
             width: 100%;
             padding: 14px;
-            background: #07090e;
+            background: #06080d;
             border: 1px solid var(--border);
             border-radius: 10px;
             color: #fff;
@@ -332,93 +398,154 @@
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.3rem; }
-            .before-after-box { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- BARRA SUPERIOR PARA EL DENTISTA / PROSPECTO -->
+    <div class="glow-bg"></div>
+
+    <!-- PITCH BAR SUPERIOR -->
     <div class="pitch-bar">
-        ✨ <strong>¿Quieres esta web con la marca de tu clínica?</strong> Te la dejamos lista en 24 horas. 
-        <a href="https://wa.me/?text=Hola,%20vi%20la%20demo%20de%20dentista%20VIP%20y%20quiero%20cotizar." target="_blank" class="btn-pitch">¡Solicitar Mi Web!</a>
+        ✨ <strong>¿Eres dueño de esta clínica dental?</strong> Personaliza este sitio con tus fotos, tratamientos y WhatsApp hoy. 
+        <a href="https://wa.me/?text=Hola,%20vi%20la%20demo%20dental%20VIP%20y%20quiero%20cotizar." target="_blank" class="btn-pitch">¡Solicitar Mi Web!</a>
     </div>
 
     <!-- HERO -->
     <header class="hero">
-        <div class="hero-content">
-            <span class="badge-glow">Diseño de Sonrisas & Estética Dental</span>
-            <h1>Reinventamos la Estética de tu Sonrisa</h1>
-            <p>Experiencia odontológica de primer nivel con tecnología 3D y tratamientos indoloros. Solicita tu cita de valoración en 30 segundos.</p>
-            <a href="#agendar" class="btn-glow">Agendar Valoración VIP ✦</a>
+        <span class="badge-glow">Odontología de Alta Gama & Estética 3D</span>
+        <h1>Especialistas en la Salud y Estética de tu Sonrisa</h1>
+        <p>Tecnología láser de última generación, tratamientos indoloros y diseño de sonrisa digital. Agenda tu evaluación diagnóstica en 30 segundos.</p>
+        <a href="#agendar" class="btn-glow">Agendar Cita de Valoración ✦</a>
+
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-number">+2,500</div>
+                <div class="stat-label">Pacientes Satisfechos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Tratamientos Garantizados</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Años de Experiencia</div>
+            </div>
         </div>
     </header>
 
-    <!-- TRATAMIENTOS -->
+    <!-- TRATAMIENTOS CON FOTOS DE ALTA RESOLUCIÓN -->
     <section class="container">
         <div class="section-header">
-            <h2>Especialidades Médicas</h2>
-            <p>Tratamientos personalizados con los estándares de calidad más altos</p>
+            <h2>Nuestras Especialidades</h2>
+            <p>Tratamientos dentales personalizados con los más altos estándares científicos</p>
         </div>
 
         <div class="grid-treatments">
             <!-- 1 -->
             <div class="card-treatment">
-                <div>
-                    <div class="icon-wrapper">💎</div>
-                    <h3 class="treatment-title">Carillas de Porcelana & Zafiro</h3>
-                    <p class="treatment-desc">Diseño de sonrisa ultradelgado sin desgaste dental masivo. Resultados naturales e inalterables.</p>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span class="treatment-price">Valoración $25</span>
-                    <button class="btn-select" onclick="selectTreatment('Carillas de Porcelana')">Agendar</button>
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80" class="treatment-img" alt="Diseño de Sonrisa">
+                <div class="treatment-body">
+                    <div>
+                        <h3 class="treatment-title">Carillas de Porcelana & Zafiro</h3>
+                        <p class="treatment-desc">Diseño de sonrisa ultradelgado de alta resistencia. Corrige alineación, forma y color sin desgaste agresivo.</p>
+                    </div>
+                    <div class="treatment-footer">
+                        <span class="treatment-price">Valoración $25</span>
+                        <button class="btn-select" onclick="selectTreatment('Carillas de Porcelana')">Agendar</button>
+                    </div>
                 </div>
             </div>
 
             <!-- 2 -->
             <div class="card-treatment">
-                <div>
-                    <div class="icon-wrapper">⚡</div>
-                    <h3 class="treatment-title">Blanqueamiento Láser Zoom</h3>
-                    <p class="treatment-desc">Aclara hasta 6 tonos en una sola sesión de 45 minutos sin causar sensibilidad molesta.</p>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span class="treatment-price">$95.00</span>
-                    <button class="btn-select" onclick="selectTreatment('Blanqueamiento Láser Zoom')">Agendar</button>
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80" class="treatment-img" alt="Blanqueamiento">
+                <div class="treatment-body">
+                    <div>
+                        <h3 class="treatment-title">Blanqueamiento Láser Zoom</h3>
+                        <p class="treatment-desc">Aclara hasta 6 tonos en solo 45 minutos mediante tecnología de luz fría que protege el esmalte dental.</p>
+                    </div>
+                    <div class="treatment-footer">
+                        <span class="treatment-price">$95.00</span>
+                        <button class="btn-select" onclick="selectTreatment('Blanqueamiento Láser Zoom')">Agendar</button>
+                    </div>
                 </div>
             </div>
 
             <!-- 3 -->
             <div class="card-treatment">
-                <div>
-                    <div class="icon-wrapper">🦷</div>
-                    <h3 class="treatment-title">Alineadores Invisibles</h3>
-                    <p class="treatment-desc">Ortodoncia 100% transparente y removible. Corrige la posición de tus dientes sin brackets visibles.</p>
+                <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=600&q=80" class="treatment-img" alt="Alineadores">
+                <div class="treatment-body">
+                    <div>
+                        <h3 class="treatment-title">Alineadores Invisibles</h3>
+                        <p class="treatment-desc">Ortodoncia transparente 100% removible. Diseñamos digitalmente el movimiento paso a paso.</p>
+                    </div>
+                    <div class="treatment-footer">
+                        <span class="treatment-price">Planes a Medida</span>
+                        <button class="btn-select" onclick="selectTreatment('Alineadores Invisibles')">Agendar</button>
+                    </div>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span class="treatment-price">Planes Mensuales</span>
-                    <button class="btn-select" onclick="selectTreatment('Alineadores Invisibles')">Agendar</button>
+            </div>
+
+            <!-- 4 -->
+            <div class="card-treatment">
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=600&q=80" class="treatment-img" alt="Limpieza Profunda">
+                <div class="treatment-body">
+                    <div>
+                        <h3 class="treatment-title">Profilaxis & Limpieza Ultrasonido</h3>
+                        <p class="treatment-desc">Eliminación profunda de placa bacteriana, pulido especializado y fluorización preventiva.</p>
+                    </div>
+                    <div class="treatment-footer">
+                        <span class="treatment-price">$35.00</span>
+                        <button class="btn-select" onclick="selectTreatment('Limpieza Profunda')">Agendar</button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- MUESTRA VISUAL ANTES Y DESPUÉS -->
+    <!-- TECNOLOGÍA & GARANTÍA DE ATENCIÓN -->
     <section class="container">
         <div class="section-header">
-            <h2>Resultados Reales</h2>
-            <p>Transformaciones de pacientes atendidos en nuestra clínica</p>
+            <h2>Por Qué Elegir Nuestra Clínica</h2>
+            <p>Infraestructura clínica pensada para tu total comodidad y seguridad</p>
         </div>
 
-        <div class="before-after-box">
-            <div>
-                <p style="color: var(--accent-gold); font-weight: 700; margin-bottom: 8px;">CASO 01: Diseños de Sonrisa en Zafiro</p>
-                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80" class="ba-img" alt="Caso Dental 1">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3 class="feature-title">Tratamientos Indoloros</h3>
+                <p class="feature-desc">Técnicas avanzadas de anestesia computarizada para una consulta sin molestias.</p>
             </div>
-            <div>
-                <p style="color: var(--accent-cyan); font-weight: 700; margin-bottom: 8px;">CASO 02: Blanqueamiento e Higiene Profunda</p>
-                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80" class="ba-img" alt="Caso Dental 2">
+            <div class="feature-card">
+                <div class="feature-icon">🔬</div>
+                <h3 class="feature-title">Escáner Intraoral 3D</h3>
+                <p class="feature-desc">Diagnóstico digital de alta definición sin incómodos moldes de pasta tradicional.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3 class="feature-title">Atención Personalizada</h3>
+                <p class="feature-desc">Especialistas certificados dedicados exclusivamente a la planificación de tu caso.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTADOS REALES (ANTES Y DESPUÉS) -->
+    <section class="container">
+        <div class="section-header">
+            <h2>Transformaciones Reales</h2>
+            <p>Casos clínicos finalizados con éxito en nuestras instalaciones</p>
+        </div>
+
+        <div class="before-after-grid">
+            <div class="ba-card">
+                <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=80" class="ba-img" alt="Caso 1">
+                <p class="ba-tag">Diseño de Sonrisa en Zafiro</p>
+            </div>
+            <div class="ba-card">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=600&q=80" class="ba-img" alt="Caso 2">
+                <p class="ba-tag">Blanqueamiento & Estética</p>
             </div>
         </div>
     </section>
@@ -427,30 +554,30 @@
     <section id="agendar" class="container">
         <div class="booking-box">
             <div style="text-align: center; margin-bottom: 30px;">
-                <h3 style="font-family: 'Syne', sans-serif; font-size: 1.8rem; color: #fff;">Agendar Cita Directa</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Elige tu tratamiento y reserva el horario de tu preferencia</p>
+                <h3 style="font-family: 'Syne', sans-serif; font-size: 2rem; color: #fff;">Agendar Cita Directa</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Solicita tu horario preferido y te responderemos de inmediato por WhatsApp</p>
             </div>
 
-            <form onsubmit="sendVIPAppointment(event)">
+            <form onsubmit="sendAppointment(event)">
                 <div class="form-group">
-                    <label>Nombre del Paciente</label>
-                    <input type="text" id="pName" class="form-control" placeholder="Ej. Dra. Valeria Ríos" required>
+                    <label>Nombre Completo del Paciente</label>
+                    <input type="text" id="pName" class="form-control" placeholder="Ej. Dra. María González" required>
                 </div>
 
                 <div class="form-group">
                     <label>Tratamiento de Interés</label>
                     <select id="pTreatment" class="form-control">
+                        <option>Consulta de Valoración Diagnóstica</option>
                         <option>Carillas de Porcelana & Zafiro</option>
                         <option>Blanqueamiento Láser Zoom</option>
                         <option>Alineadores Invisibles</option>
-                        <option>Limpieza Profunda & Profilaxis</option>
-                        <option>Consulta de Valoración General</option>
+                        <option>Profilaxis & Limpieza Ultrasonido</option>
                     </select>
                 </div>
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                     <div class="form-group">
-                        <label>Fecha Estimada</label>
+                        <label>Fecha Preferida</label>
                         <input type="date" id="pDate" class="form-control" required>
                     </div>
                     <div class="form-group">
@@ -468,7 +595,7 @@
     </section>
 
     <footer>
-        <p>© 2026 Dental Studio VIP. Sitio web demostrativo de alta gama para clínicas y consultorios.</p>
+        <p>© 2026 Dental Studio VIP. Plataforma web demostrativa para clínicas y odontólogos.</p>
     </footer>
 
     <script>
@@ -477,14 +604,14 @@
             document.getElementById('agendar').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function sendVIPAppointment(e) {
+        function sendAppointment(e) {
             e.preventDefault();
             const name = document.getElementById('pName').value;
             const treatment = document.getElementById('pTreatment').value;
             const date = document.getElementById('pDate').value;
             const time = document.getElementById('pTime').value;
 
-            let msg = `Hola! Quisiera solicitar una cita médica de valoración VIP:%0A%0A`;
+            let msg = `Hola! Quisiera agendar una cita de valoración médica:%0A%0A`;
             msg += `👤 *Paciente:* ${name}%0A`;
             msg += `✨ *Tratamiento:* ${treatment}%0A`;
             msg += `📅 *Fecha:* ${date}%0A`;
